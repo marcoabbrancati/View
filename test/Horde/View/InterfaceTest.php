@@ -7,7 +7,8 @@
  * @package    View
  * @subpackage UnitTests
  */
-
+namespace Horde\View;
+use \PHPUnit\Framework\TestCase;
 /**
  * @group      view
  * @author     Chuck Hagenbuch <chuck@horde.org>
@@ -15,7 +16,7 @@
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_InterfaceTest extends PHPUnit_Framework_TestCase {
+class InterfaceTest extends TestCase {
 
     public function testViewInterface()
     {

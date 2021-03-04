@@ -11,7 +11,12 @@
  * @package    View
  * @subpackage UnitTests
  */
-
+namespace Horde\View;
+use \Horde_Log_Handler_Mock;
+use \Horde_Log_Logger;
+use \Horde_View;
+use \Horde_View_Helper_Benchmark;
+use \PHPUnit\Framework\TestCase;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -22,9 +27,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_Helper_BenchmarkTest extends PHPUnit_Framework_TestCase
+class BenchmarkTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->view = new Horde_View();
         $this->view->addHelper(new Horde_View_Helper_Benchmark($this->view));

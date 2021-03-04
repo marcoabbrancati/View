@@ -11,7 +11,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-
+namespace Horde\View;
+use \Horde_Test_Case;
+use \Horde_View;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -22,11 +24,11 @@
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_BaseTest extends Horde_Test_Case
+class BaseTest extends Horde_Test_Case
 {
     protected $_view = null;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->_view = new Horde_View();
         $this->_view->addTemplatePath(__DIR__ . '/fixtures/');

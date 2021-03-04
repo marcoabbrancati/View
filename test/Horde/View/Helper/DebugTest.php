@@ -11,7 +11,11 @@
  * @package    View
  * @subpackage UnitTests
  */
-
+namespace Horde\View;
+use \Helper;
+use \Horde_View;
+use \PHPUnit\Framework\TestCase;
+use \Horde_View_Helper_Debug;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -22,9 +26,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_Helper_DebugTest extends PHPUnit_Framework_TestCase
+class DebugTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->helper = new Horde_View_Helper_Debug(new Horde_View());
     }

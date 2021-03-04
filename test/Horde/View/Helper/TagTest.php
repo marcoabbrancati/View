@@ -11,7 +11,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-
+namespace Horde\View;
+use \Helper;
+use \Horde_Test_Case;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -22,9 +24,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_Helper_TagTest extends Horde_Test_Case
+class TagTest extends Horde_Test_Case
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->view = new Horde_View();
         $this->view->addHelper('Tag');

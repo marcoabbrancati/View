@@ -11,7 +11,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-
+namespace Horde\View;
+use \Helper;
+use \PHPUnit\Framework\TestCase;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -22,9 +24,9 @@
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_Helper_CaptureTest extends PHPUnit_Framework_TestCase
+class CaptureTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->view   = new Horde_View();
         $this->helper = new Horde_View_Helper_Capture($this->view);
