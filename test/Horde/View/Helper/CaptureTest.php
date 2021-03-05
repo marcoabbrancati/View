@@ -13,6 +13,8 @@
  */
 namespace Horde\View;
 use \Helper;
+use \Horde_View;
+use \Horde_View_Helper_Capture;
 use \PHPUnit\Framework\TestCase;
 /**
  * @group      view

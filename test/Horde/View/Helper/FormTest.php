@@ -12,6 +12,8 @@
  * @subpackage UnitTests
  */
 namespace Horde\View;
+use \Horde_View;
+use \Horde_View_Base;
 use \Helper;
 use \Horde_Test_Case;
 use \Horde_View_Helper_Base;

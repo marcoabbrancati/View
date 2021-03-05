@@ -14,6 +14,8 @@
 namespace Horde\View;
 use \Horde_Test_Case;
 use \Horde_View;
+use \Horde_View_Helper_Text;
+use \Horde_View_Helper_Date;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>

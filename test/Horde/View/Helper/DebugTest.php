@@ -41,7 +41,7 @@ class DebugTest extends TestCase
         $expected = '<pre class="debug_dump">string(7) &quot;foo&amp;bar&quot;';
         $output = $this->helper->debug('foo&bar');
         ini_set('xdebug.overload_var_dump', $xdebug);
-        $this->assertContains($expected, $output);
+        $this->assertStringContainsString($expected, $output);
     }
 
 }

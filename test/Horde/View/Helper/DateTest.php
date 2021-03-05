@@ -12,8 +12,10 @@
  * @subpackage UnitTests
  */
 namespace Horde\View;
+use \Horde_View;
 use \Helper;
 use \Horde_Test_Case;
+use \Horde_View_Helper_Date;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>

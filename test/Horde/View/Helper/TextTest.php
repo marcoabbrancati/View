@@ -15,6 +15,7 @@ namespace Horde\View;
 use \Helper;
 use \Horde_Test_Case;
 use \Horde_View;
+use \Horde_View_Helper_Text_Cycle;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
