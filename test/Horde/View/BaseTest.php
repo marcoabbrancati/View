@@ -55,12 +55,8 @@ class BaseTest extends Horde_Test_Case
 
     public function testAssignDoesntOverridePrivateVariables()
     {
-        try {
-            $this->_view->assign(array('_templatePath' => 'test'));
-        } catch (Exception $e) {
-            return;
-        }
-        $this->fail('Overwriting a private/protected variable should fail');
+        $this->expectException(\Horde_View_Exception::class);
+        $this->_view->assign(array('_templatePath' => 'test'));
     }
 
     public function testAssignAllowsUnderscoreVariables()
