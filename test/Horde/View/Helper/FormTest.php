@@ -18,6 +18,9 @@ use \Helper;
 use \Horde_Test_Case;
 use \Horde_View_Helper_Base;
 use \Horde_View_Helper_Form_Builder;
+use \Horde\View\Mock\Builder;
+use \Horde\View\Mock\UrlHelper;
+
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -36,7 +39,7 @@ class Horde_View_Helper_FormTest extends Horde_Test_Case
         $this->view->addHelper('Form');
         $this->view->addHelper('FormTag');
         $this->view->addHelper('Tag');
-        $this->view->addHelper(new Horde_View_Helper_FormTest_MockUrlHelper($this->view));
+        $this->view->addHelper(new UrlHelper($this->view));
 
         $this->post = (object)array('title', 'authorName', 'body',
                                     'secret', 'writtenOn', 'cost');
@@ -416,7 +419,7 @@ class Horde_View_Helper_FormTest extends Horde_Test_Case
     public function testFormForWithCustomBuilder()
     {
         ob_start();
-        $form = $this->view->formFor('post', $this->post, array('builder' => 'Horde_View_Helper_FormTest_BuilderMock'));
+        $form = $this->view->formFor('post', $this->post, array('builder' => Builder::class));
             echo $form->textField('bar');
             echo $form->foo();
         $form->end();
@@ -432,7 +435,7 @@ class Horde_View_Helper_FormTest extends Horde_Test_Case
     public function testDefaultFormBuilder()
     {
         $oldDefaultFormBuilder = Horde_View_Base::$defaultFormBuilder;
-        Horde_View_Base::$defaultFormBuilder = 'Horde_View_Helper_FormTest_BuilderMock';
+        Horde_View_Base::$defaultFormBuilder = Builder::class;
 
         try {
             ob_start();
@@ -458,7 +461,7 @@ class Horde_View_Helper_FormTest extends Horde_Test_Case
     public function testFieldsForWithCustomBuilder()
     {
         ob_start();
-        $fields = $this->view->fieldsFor('post', $this->post, array('builder' => 'Horde_View_Helper_FormTest_BuilderMock'));
+        $fields = $this->view->fieldsFor('post', $this->post, array('builder' => Builder::class));
             echo $fields->textField('bar');
             echo $fields->foo();
         $fields->end();
@@ -513,20 +516,4 @@ class Horde_View_Helper_FormTest extends Horde_Test_Case
     // @todo test_form_for_with_string_url_option
     // @todo test_form_for_with_hash_url_option
     // @todo test_remote_form_for_with_html_options_adds_options_to_form_tag
-}
-
-class Horde_View_Helper_FormTest_MockUrlHelper extends Horde_View_Helper_Base
-{
-    public function urlFor($options)
-    {
-        return 'http://www.example.com';
-    }
-}
-
-class Horde_View_Helper_FormTest_BuilderMock extends Horde_View_Helper_Form_Builder
-{
-    public function foo()
-    {
-        return '<foo />';
-    }
 }
