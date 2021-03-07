@@ -11,8 +11,7 @@
  * @package    View
  * @subpackage UnitTests
  */
-namespace Horde\View;
-use \Helper;
+namespace Horde\View\Helper;
 use \Horde_Test_Case;
 use \Horde_View;
 /**
@@ -25,7 +24,7 @@ use \Horde_View;
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_Helper_JavascriptTest extends Horde_Test_Case
+class JavascriptTest extends Horde_Test_Case
 {
     public function setUp(): void
     {

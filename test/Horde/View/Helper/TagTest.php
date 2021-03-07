@@ -42,7 +42,7 @@ class TagTest extends Horde_Test_Case
 
     public function testTagOptions()
     {
-        $this->assertRegExp('/\A<p class="(show|elsewhere)" \\/>\z/',
+        $this->assertMatchesRegularExpression('/\A<p class="(show|elsewhere)" \\/>\z/',
                             $this->view->tag('p', array('class' => 'show',
                                                         'class' => 'elsewhere')));
     }

@@ -17,6 +17,7 @@ use \Horde_Log_Handler_Mock;
 use \Horde_Log_Logger;
 use \Horde_View;
 use \Horde_View_Helper_Benchmark;
+use \Horde_View_Helper_Benchmark_Timer as Timer;
 use \PHPUnit\Framework\TestCase;
 /**
  * @group      view
@@ -45,7 +46,9 @@ class BenchmarkTest extends TestCase
         $this->view->addHelper(new Horde_View_Helper_Benchmark($this->view));
 
         $bench = $this->view->benchmark();
-        $bench->end();
+        $ret = $bench->end();
+        $this->assertInstanceOf(Timer::class, $bench);
+        $this->assertNull($ret);
     }
 
     public function testDefaults()
@@ -84,7 +87,7 @@ class BenchmarkTest extends TestCase
     {
         $last = end($this->mock->events);
         $this->assertEquals(strtoupper($level), $last['levelName']);
-        $this->assertRegExp("/^$message \(.*\)$/", $last['message']);
+        $this->assertMatchesRegularExpression("/^$message \(.*\)$/", $last['message']);
     }
 
 }

@@ -11,7 +11,7 @@
  * @package    View
  * @subpackage UnitTests
  */
-namespace Horde\View;
+namespace Horde\View\Helper;
 use \Horde_View;
 use \Horde_View_Base;
 use \Helper;
@@ -31,7 +31,7 @@ use \Horde\View\Mock\UrlHelper;
  * @package    View
  * @subpackage UnitTests
  */
-class Horde_View_Helper_FormTest extends Horde_Test_Case
+class FormTest extends Horde_Test_Case
 {
     public function setUp(): void
     {

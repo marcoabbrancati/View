@@ -14,6 +14,7 @@
 namespace Horde\View;
 use \Horde_Test_Case;
 use \Horde_View;
+use \Horde_View_Helper_Base;
 use \Horde_View_Helper_Text;
 use \Horde_View_Helper_Date;
 use \Horde_View_Exception as ViewException;
@@ -242,6 +243,7 @@ class BaseTest extends Horde_Test_Case
         $this->_view->addHelper(new Horde_View_Helper_Text($this->_view));
 
         // successful when trying to add it again
-        $this->_view->addHelper(new Horde_View_Helper_Text($this->_view));
+        $ret = $this->_view->addHelper(new Horde_View_Helper_Text($this->_view));
+        $this->assertInstanceOf(Horde_View_Helper_Base::class, $ret);
     }
 }
