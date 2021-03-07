@@ -16,6 +16,7 @@ use \Helper;
 use \Horde_View;
 use \Horde_View_Helper_Capture;
 use \PHPUnit\Framework\TestCase;
+use \Horde_View_Exception as ViewException;
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -44,16 +45,11 @@ class CaptureTest extends TestCase
 
     public function testCaptureThrowsWhenAlreadyEnded()
     {
+        $this->expectException(ViewException::class);
+        $this->expectExceptionMessage('Capture already ended');
         $capture = $this->helper->capture();
         $capture->end();
-
-        try {
-            $capture->end();
-            $this->fail();
-        } catch (Exception $e) {
-            $this->assertInstanceOf('Horde_View_Exception', $e);
-            $this->assertRegExp('/capture already ended/i', $e->getMessage());
-        }
+        $capture->end();
     }
 
     public function testContentFor()
