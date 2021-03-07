@@ -16,6 +16,9 @@ use \Horde_Test_Case;
 use \Horde_View;
 use \Horde_View_Helper_Text;
 use \Horde_View_Helper_Date;
+use \Horde_View_Exception as ViewException;
+use \Exception as Exception;
+
 /**
  * @group      view
  * @author     Mike Naberezny <mike@maintainable.com>
@@ -55,7 +58,7 @@ class BaseTest extends Horde_Test_Case
 
     public function testAssignDoesntOverridePrivateVariables()
     {
-        $this->expectException(\Horde_View_Exception::class);
+        $this->expectException(ViewException::class);
         $this->_view->assign(array('_templatePath' => 'test'));
     }
 
@@ -223,10 +226,8 @@ class BaseTest extends Horde_Test_Case
         $str = 'The quick brown fox jumps over the lazy dog tomorrow morning.';
 
         // helper doesn't exist
-        try {
-            $this->_view->truncateMiddle($str, 40);
-        } catch (Exception $e) {}
-        $this->assertTrue($e instanceof Horde_View_Exception);
+        $this->expectException(ViewException::class);
+        $this->_view->truncateMiddle($str, 40);
 
         // add text helper
         $this->_view->addHelper(new Horde_View_Helper_Text($this->_view));
